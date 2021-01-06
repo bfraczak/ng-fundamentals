@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
 import {IUser} from "./user.model";
-import {FormControl} from "@angular/forms";
 
 @Injectable()
 export class AuthService{
