@@ -5,11 +5,10 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivatorService,
   EventsListResolverService,
   CreateSessionComponent,
   SessionListComponent,
-  EventsListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator
+  EventsListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator, EventResolverService
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -27,6 +26,7 @@ import {
   Toastr,
   TOASTR_TOKEN
 } from "./common";
+import {HttpClientModule} from "@angular/common/http";
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -53,7 +53,8 @@ let jQuery = window['$'];
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     EventService,
@@ -65,8 +66,8 @@ let jQuery = window['$'];
       provide: JQ_TOKEN,
       useValue: jQuery
     },
-    EventRouteActivatorService,
     EventsListResolverService,
+    EventResolverService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
